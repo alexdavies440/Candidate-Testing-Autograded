@@ -9,7 +9,6 @@ let question = "Who was the first American woman in space? ";
 let correctAnswer = "Sally Ride";
 let candidateAnswer = "";
 
-
 //TODO: Variables for Part 2
 let questions = [
   "Who was the first American woman in space? ", 
@@ -25,37 +24,72 @@ let correctAnswers = [
   "Trajectory",
   "3"
 ];
-let candidateAnswers;
+let candidateAnswers = [];
 
 
 function askForName() {
   // TODO 1.1b: Ask for candidate's name //
-console.log("What is your name?");
-input = candidateName;
+// console.log("What is your name?");                  //commented out because assignment to constant 'input' causing error
+// input = candidateName;
 }
 
 function askQuestion() {
   // TODO 1.2b: Ask candidate the question and assign the response as candidateAnswer //
-console.log("Who was the first American woman in space? ");
-input = candidateAnswer;
+//console.log("Who was the first American woman in space? ");
+//input = candidateAnswer;
+let i = 0;
+candidateAnswer = input;
 
+while (i < questions.length) {
+candidateAnswers[i] = input.question(questions[i]);
+i++;
 }
-
+}
 function gradeQuiz(candidateAnswers) {
 
-  // TODO 1.2c: Let the candidate know if they have answered the question correctly or incorrectly // 
-if (candidateAnswer === correctAnswer) {
-  console.log("You are correct!");
-} else {
-  console.log("Sorry, try again");
+  // TODO 1.2c: Let the candidate know if they have answered the question correctly or incorrectly. 
+  //LECTURE NOTES:
+    // SHOULD BE A CONDITIONAL. 
+    // USE LOWERCASE OR UPPERCASE METHODS TO MAKE CASE INSENSITIVE, YOUR CHOICE. 
+    // A LOOP ONLY LOOKS AT THE INDEX?
+
+
+// if (candidateAnswer === correctAnswer) {
+//   console.log("You are correct!");
+// } else {
+//   console.log("Sorry, try again");
+
+
+for (let i = 0; i < questions.length ; i++) {
+  console.log(`${questions[i]}`);
+  console.log(`Your Answer: ${candidateAnswers[i]}`);
+  console.log(`Correct Answer: ${correctAnswers[i]}`);
 }
 
+  //TODO 3.2 use this variable to calculate the candidates score.
+let score = [];
+let grade = score;
+let numberOfQuestions = questions.length;
 
-  let grade;  //TODO 3.2 use this variable to calculate the candidates score.
+// candidateAnswers = candidateAnswers.join(',');
+// candidateAnswers = candidateAnswers.toLowerCase;
+// candidateAnswers = candidateAnswers.split(',');
 
+// correctAnswers = correctAnswers.join(',');
+// correctAnswers = correctAnswers.toLowerCase;
+// correctAnswers = correctAnswers.split(',');
 
-  return grade;
+for (let i = 0; i < questions.length; i++) {
+if (candidateAnswers[i] === correctAnswers[i]) {
+
+  score.push(1);
+  console.log(score);
 }
+console.log(score);
+}
+return grade;
+
+} 
 
 function runProgram() {
   askForName();
