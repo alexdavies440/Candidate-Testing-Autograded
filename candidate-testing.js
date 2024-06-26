@@ -11,7 +11,7 @@ let candidateAnswer = "";
 
 //TODO: Variables for Part 2
 let questions = [
-  "Who was the first American woman in space? ", 
+  "Who was the first American woman in space? ",
   "True or false: 5 kilometer == 5000 meters? ",
   "(5 + 3)/2 * 10 = ? ",
   "Given the array [8, 'Orbit', 'Trajectory', 45], what entry is at index 2? ",
@@ -67,29 +67,31 @@ for (let i = 0; i < questions.length ; i++) {
 }
 
   //TODO 3.2 use this variable to calculate the candidates score.
-let score = [];
-let grade = score;
+let scoreBoard = [];
+let score = 0;
+let grade = 0;
 let numberOfQuestions = questions.length;
 
-// candidateAnswers = candidateAnswers.join(',');
-// candidateAnswers = candidateAnswers.toLowerCase;
-// candidateAnswers = candidateAnswers.split(',');
+let userAnswers = candidateAnswers.join(',');
+userAnswers = userAnswers.toLowerCase();
+userAnswers = userAnswers.split(',');
 
-// correctAnswers = correctAnswers.join(',');
-// correctAnswers = correctAnswers.toLowerCase;
-// correctAnswers = correctAnswers.split(',');
+let quizAnswers = correctAnswers.join(',')
+quizAnswers = quizAnswers.toLowerCase();
+quizAnswers = quizAnswers.split(',')
 
 for (let i = 0; i < questions.length; i++) {
-if (candidateAnswers[i] === correctAnswers[i]) {
+if (userAnswers[i] === quizAnswers[i]) {
 
-  score.push(1);
-  console.log(score);
+  scoreBoard.push(1);
+  score = scoreBoard.length;
+  grade = (score/questions.length) * 100;
 }
-console.log(score);
-}
+} console.log(grade);
 return grade;
 
 } 
+
 
 function runProgram() {
   askForName();
