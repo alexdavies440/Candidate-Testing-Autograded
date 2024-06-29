@@ -29,48 +29,35 @@ let candidateAnswers = [];
 
 function askForName() {
   // TODO 1.1b: Ask for candidate's name //
-// console.log("What is your name?");                  //commented out because assignment to constant 'input' causing error
-// input = candidateName;
+question = "What is your name? "
+candidateName = input.question(question);
 }
 
 function askQuestion() {
   // TODO 1.2b: Ask candidate the question and assign the response as candidateAnswer //
-//console.log("Who was the first American woman in space? ");
-//input = candidateAnswer;
 let i = 0;
-candidateAnswer = input;
 
 while (i < questions.length) {
 candidateAnswers[i] = input.question(questions[i]);
 i++;
-}
+} console.log('\n');
 }
 function gradeQuiz(candidateAnswers) {
 
   // TODO 1.2c: Let the candidate know if they have answered the question correctly or incorrectly. 
-  //LECTURE NOTES:
-    // SHOULD BE A CONDITIONAL. 
-    // USE LOWERCASE OR UPPERCASE METHODS TO MAKE CASE INSENSITIVE, YOUR CHOICE. 
-    // A LOOP ONLY LOOKS AT THE INDEX?
-
-
-// if (candidateAnswer === correctAnswer) {
-//   console.log("You are correct!");
-// } else {
-//   console.log("Sorry, try again");
-
+console.log(`Candidate Name: ${candidateName}`);
 
 for (let i = 0; i < questions.length ; i++) {
-  console.log(`${questions[i]}`);
+  console.log(`${i +1}) ${questions[i]}`);
   console.log(`Your Answer: ${candidateAnswers[i]}`);
-  console.log(`Correct Answer: ${correctAnswers[i]}`);
+  console.log(`Correct Answer: ${correctAnswers[i]} \n`);
 }
 
   //TODO 3.2 use this variable to calculate the candidates score.
 let scoreBoard = [];
 let score = 0;
 let grade = 0;
-let numberOfQuestions = questions.length;
+let gradeStatus = "FAILED";
 
 let userAnswers = candidateAnswers.join(',');
 userAnswers = userAnswers.toLowerCase();
@@ -86,9 +73,15 @@ if (userAnswers[i] === quizAnswers[i]) {
   scoreBoard.push(1);
   score = scoreBoard.length;
   grade = (score/questions.length) * 100;
+
+  if (grade >= 80) {
+    gradeStatus = "PASSED";
+  }
 }
-} console.log(grade);
+} console.log(`>>> Overall Grade: ${grade}% (${score} of ${questions.length} responses correct) <<<`);
+console.log(`>>> Status: ${gradeStatus} <<<`)
 return grade;
+
 
 } 
 
@@ -96,7 +89,7 @@ return grade;
 function runProgram() {
   askForName();
   // TODO 1.1c: Greet candidate using their name //
-   console.log("Hello" + candidateName);
+   //console.log("Hello " + candidateName);
   askQuestion();
   gradeQuiz(this.candidateAnswers);
 }
